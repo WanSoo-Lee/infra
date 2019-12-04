@@ -1,0 +1,4 @@
+미디어 서버 추가하는 명령어 (마스터 서버에서 실행)
+#nbemmcmd -addhost -machinename nbumedia -machinetype media -masterserver nbumaster -operatingsystem linux -netbackupversion 7.7.3
+
+
