@@ -1,0 +1,44 @@
+VmWare vsphere 7.x & infiniband connect 5(IB mode) after SR-IOV 지원 문의
+
+1. 환경
+1.1. server : x86 H/W [cpu: intel, interface: pcie 3.0 x16]
+1.2. 가상화 : vmware vsphere 7.x after
+1.3. guest os : RedHat linux 8.2 after
+1.4. infiniband : infiniband connect 5 after
+
+2. 구성 내용
+2.1. server 에 infiniband card(dual port) connect 5/6 장착
+2.2. 가상화 vmware vsphere 7.x 로 [2.1.] 구성의 인터페이스를 sr-iov[IB mode, not ethernet] 셋팅 후 guest-os 에 할당.
+2.3. RedHat linux 8.2 로 guest os 설치 후 [2.2.]에서 할당 받은 인터페이스로 인식 후 통신 가능 확인.
+
+3. 요청 사항
+3.1. 호환성 매트릭스
+3.1.1. infiniband card 공급사 입장에서 필요한 infiniband card 종류별 firmware version에 따른 server firmware version, 가상화 driver 버전
+    예) mellanox infiniband card connect 5 (firware x.x.x) : server(hp firmware x.x.x/ dell firmware x.x.x/lenover firmware x.x.x), vmware vshere x.x
+3.1.2. vmware 공급사 입장에서 필요한 server 사양 및 infiniband card 종류(connect x 이후, firmware x.x)
+3.1.3. server 공급사 입장에서 필요한 infiniband card 종류별 firmware version, 가상화 버젼
+
+3.2. 구성 방법 문의
+3.2.1. 2. 구성 내용을 만족 시키기 위한 단계별 work aroud(vmware 보다는 kvm 의 내용이 많음)
+3.2.2. 최종 guest os 에서 infiniband card port 의 인터페이스 이름(물리서버와는 다른 인터페이스 이름으로 보여지는지?)
+3.2.3 3.2.2. 에서 물리서버와 다른 이름으로 만들어져도 기능상(api program)으로 수정 없이 진행 해도 되는지
+
+3.3. vmware + x86(server) + infiniband features 상으로는 SR-IOV가 명시 되어 있는데, vmware + x86(server) + infiniband(IB mode)로 구성가능한지 여부.
+
+
+
+https://serverfault.com/questions/694198/vmware-infiniband-configuration
+
+https://communities.vmware.com/t5/ESXi-Discussions/mellanox-infiniband-connectx-5-driver-support-for-esxi-7-0u1/td-p/2814973
+
+vmware 7.x edr speed
+
+https://docs.mellanox.com/pages/releaseview.action?pageId=15051769
+
+https://docs.mellanox.com/display/VMwarev419701/Changes+and+New+Features
+
+https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/techpaper/vmw-tuning-latency-sensitive-workloads-white-paper.pdf
+
+http://www.vmware.com/files/pdf/techpaper/VMware-vSphere-CPU-Sched-Perf.pdf
+
+https://docs.mellanox.com/display/VMwarev4171516/Virtualization#Virtualization-ConfiguringInfiniBand-SR-IOV
