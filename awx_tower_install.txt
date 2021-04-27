@@ -1,0 +1,15 @@
+-- ansible tower setting
+1. inventory 파일을 먼저 수정. id passwd 등 입력
+2. postgresql 10 버전 설치
+3. rh-postgresql 서비스로 기동
+4. subscription 등록 access.redhat.com 에서 export 파일 한 후 tower 에서 import
+
+
+-- awx 설치
+1. ansible package 설치
+2. python3 설치
+3. minikube 설치
+4. kubectl 설치
+5. [kvm, virtual box, vmware] 중 설치
+6. awx 설치 과정 이행.
+7. minikube start 후 (kubectl delete -A ValidatingWebhookconfiguration ingress-nginx-admission) 실행 필요.
