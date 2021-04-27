@@ -1,0 +1,17 @@
+# public key 를 server들에 등록하는 playbook
+---
+- hosts: all # inventory 의 모든 대상
+  tasks: # 수행할 작업
+   - name: authorized to server # 작업 이름
+ authorized_key: # 수행할 MODULE 명
+ user: root # MODULE에 들어갈 environment
+ state: present
+ key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+
+
+ssh-keygen # ~/.ssh/id_rsa 나 ~/.ssh/id_rsa.pub 이 있으면 그것을 사용
+ssh-copy-id [id]@[ip]
+
+id_rsa 마스터 키를 내가 사용하는 console 에 있고, 접속하려는 서버에 public key를 복사한다.(.ssh/authorized_keys에 저장된다.)
+접속 방법은 # ssh -i privit.key [id]@[ip]
