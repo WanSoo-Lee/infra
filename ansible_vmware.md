@@ -15,9 +15,11 @@ pyvmomi-7.0.1.tar.gz
 \# vi /tmp/Making_VMware.yml
 
 \- name: Create VMware
+
   vmware_guest:
-    hostname: 10.10.10.10                        // vCenter IP
-    username: administrator@vsphere.local        // vCenter 로그인ID
+  
+    hostname: 10.10.10.10                        // vCenter IP    
+    username: administrator@vsphere.local        // vCenter 로그인ID    
     password: Vmware1!                           // vCenter 로그인PW
     folder: /vm                                  // VMware 생성 폴더
     name: Ansible_VM                             // VMware 이름
