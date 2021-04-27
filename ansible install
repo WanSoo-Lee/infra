@@ -1,1 +1,4 @@
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
+
+$ python -m pip install --user ansible
+$ python -m pip install --user paramiko
