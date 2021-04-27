@@ -3,13 +3,16 @@ https://autoattack.tistory.com/20?category=890242
 pypi.org
 pyvmomi-7.0.1.tar.gz
 
-# gzip -d /tmp/pyvmomi-7.0.1.tar.gz
-# tar -xvf /tmp/pyvmomi-7.0.1.tar
-# cd /tmp/pyvmomi-7.0.1
-# python setup.py install
+\# gzip -d /tmp/pyvmomi-7.0.1.tar.gz
+
+\# tar -xvf /tmp/pyvmomi-7.0.1.tar
+
+\# cd /tmp/pyvmomi-7.0.1
+
+\# python setup.py install
 
 
-# vi /tmp/Making_VMware.yml
+\# vi /tmp/Making_VMware.yml
 
 - name: Create VMware
   vmware_guest:
@@ -37,12 +40,12 @@ pyvmomi-7.0.1.tar.gz
         type: iso                                        // cdrom 연결 미디어 종류
         iso_path: "[Datastore1]/CentOS_V7_X86.iso"       // ISO 경로
 
-# ansible-playbook Making_VMware.yml -vvv
+\# ansible-playbook Making_VMware.yml -vvv
 
 
-# vi /tmp/Making_VMware.sh
+\# vi /tmp/Making_VMware.sh
 
-#!/bin/bash
+\#!/bin/bash
   echo -n "vCenter_IP : "; read vCenter_IP
   echo -n "vCenter_ID : "; read vCenter_ID
   echo -n "vCenter_PW : "; read vCenter_PW
@@ -51,6 +54,6 @@ pyvmomi-7.0.1.tar.gz
   echo -n "Guest_SM : "; read Guest_SM
   echo -n "Guest_GW : "; read Guest_GW
 
-# ansible-playbook /tmp/MakeVM_VMware.yml -vvv -e "vCenter_IP=$vCenter_IP vCenter_ID=$vCenter_ID vCenter_PW=$vCenter_PW Guest_Hostname=$Guest_Hostname Guest_IP=$Guest_IP Guest_SM=$Guest_SM Guest_GW=$Guest_GW"
+\# ansible-playbook /tmp/MakeVM_VMware.yml -vvv -e "vCenter_IP=$vCenter_IP vCenter_ID=$vCenter_ID vCenter_PW=$vCenter_PW Guest_Hostname=$Guest_Hostname Guest_IP=$Guest_IP Guest_SM=$Guest_SM Guest_GW=$Guest_GW"
 
 echo 명령어를 사용하여 각각의 필요한 변수를 사용자 입력을 통해 할당받고, Playbook 실행 시에 이 변수들을 자동으로 입력되도록 하는 내용이다. 중요한 것은 #ansible-playbook과 -e 옵션을 함께 사용해야 하는 것이다.
