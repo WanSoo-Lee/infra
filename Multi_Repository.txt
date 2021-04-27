@@ -1,0 +1,97 @@
+Multi Repository
+
+https://access.redhat.com/solutions/23016
+
+reposync -q -n -a x86_64 -d -m -l -p ${base_dir} \
+-r rhel-x86_64-server-6 \
+-r rhel-x86_64-server-fastrack-6 \
+-r rhel-x86_64-server-optional-6 \ls
+-r rhel-x86_64-server-optional-fastrack-6
+===========================================================================================
+
+#!/bin/bash
+#==============================================================================
+# Title        : syncRepo.sh
+#
+# Description  : Synchronizes the local RHEL repository to RHN
+#
+# Author       : Firas AlShafei
+#
+# Version      : v1.1
+#
+#==============================================================================
+RELEASE=rhel-x86_64-server-5
+
+# Clear YUM cache
+yum clean all
+
+# Create directory structure
+wansoo_lee@vscam-instance-1:~$ more /home/wansoo.lee/vsc/*
+::::::::::::::
+/home/wansoo.lee/vsc/Multi_Repository.txt
+::::::::::::::
+Multi Repository
+
+https://access.redhat.com/solutions/23016
+
+reposync -q -n -a x86_64 -d -m -l -p ${base_dir} \
+-r rhel-x86_64-server-6 \
+-r rhel-x86_64-server-fastrack-6 \
+-r rhel-x86_64-server-optional-6 \ls
+-r rhel-x86_64-server-optional-fastrack-6
+===========================================================================================
+
+#!/bin/bash
+#==============================================================================
+# Title        : syncRepo.sh
+#
+# Description  : Synchronizes the local RHEL repository to RHN
+#
+# Author       : Firas AlShafei
+#
+# Version      : v1.1
+#
+#==============================================================================
+RELEASE=rhel-x86_64-server-5
+
+# Clear YUM cache
+yum clean all
+
+# Create directory structure
+mkdir -p /MYPATH/RHEL5_REPO/$RELEASE
+
+# Remove previous metadata from our repository
+rm -f /MYPATH/RHEL5_REPO/$RELEASE/repodata/*
+
+# Sync RHN repo to our local folder
+reposync -p /MYPATH/RHEL5_REPO/ --repoid=$RELEASE -l
+
+# Create metadata
+yum --disablerepo=* --enablerepo=$RELEASE makecache
+
+# Copy metadata from cache to our local repo
+cp -f /var/cache/yum/$RELEASE/*.xml* /MYPATH/RHEL5_REPO/$RELEASE/repodata/
+
+
+===========================================================================================
+
+#if [ "$(getfacl -n /etc/pki/entitlement/*-key.pem |grep group:####:r-- |wc -l)" != "1" ]; then exit 1; fi
+#yum clean all
+#rm -rf upstreamrepo
+#reposync --gpgcheck -l -u --repoid=upstreamrepo -d --downloadcomps --download-metadata --download_path `pwd` | gzip -9 -c
+ > upstreamrepo.url.txt.gz
+#createrepo -v  `pwd`/<upstreamrepo> -g comps.xml
+#pushd upstreamrepo
+#cp *updateinfo.xml.gz repodata/updateinfo.xml.gz
+#gunzip repodata/updateinfo.xml.gz
+#modifyrepo `pwd`/repodata/updateinfo.xml `pwd`/repodata/
+#popd
+
+===========================================================================================
+
+#createrepo --update -v  `pwd`/<upstreamrepo> -g comps.xml
+
+Scanning old repo data
+Could not find valid repo at: /upstreamrepo/
+
+===========================================================================================
