@@ -41,3 +41,9 @@ python3: /usr/bin/python3.9 /usr/bin/python3.9m /usr/bin/python3 /usr/lib/python
 $ python -V
 
 Python 3.9.1
+
+
+### PIP install on ubuntu 20.04
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+$ python get-pip.py --user
+$ /usr/bin/python -m pip install --upgrade pip
