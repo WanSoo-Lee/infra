@@ -14,7 +14,7 @@ pyvmomi-7.0.1.tar.gz
 
 \# vi /tmp/Making_VMware.yml
 
-- name: Create VMware
+\- name: Create VMware
   vmware_guest:
     hostname: 10.10.10.10                        // vCenter IP
     username: administrator@vsphere.local        // vCenter 로그인ID
@@ -25,13 +25,12 @@ pyvmomi-7.0.1.tar.gz
     guest_id: centos64Guest                      // GuestOS 호환성 종류 (다르면 부팅 불가함)
     esxi_hostname: 10.10.10.20                   // Vmware가 위치할 ESXi IP
     disk:                                        // 연결 Disk 정보
-    - size_gb: 10
+    \- size_gb: 10
       type: thin
       datastore: datastore1
     hardware:                                     // 연결 CPU/MEM 정보
       memory_mb: 512
-      num_cpus: 4
-
+      num_cpus: 4                                 // test
     cdrom:                                               // 연결 CPU/MEM 정보
       - controller_type: ide                             // cdrom 장치 Type
         controller_number: 0                             // 컨트롤러 번호 (특별한 이유가 없다면 0부터 시작)
