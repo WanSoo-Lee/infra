@@ -10,7 +10,7 @@
 
 
 
-ssh-keygen # ~/.ssh/id_rsa 나 ~/.ssh/id_rsa.pub 이 있으면 그것을 사용
+ssh-keygen # ~/.ssh/id_rsa {or} ~/.ssh/id_rsa.pub 이 있으면 그것을 사용
 ssh-copy-id [id]@[ip]
 
 id_rsa 마스터 키를 내가 사용하는 console 에 있고, 접속하려는 서버에 public key를 복사한다.(.ssh/authorized_keys에 저장된다.)
